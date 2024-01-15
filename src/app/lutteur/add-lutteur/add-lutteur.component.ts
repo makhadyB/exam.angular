@@ -24,7 +24,8 @@ export class AddLutteurComponent implements OnInit {
 
   ngOnInit() {
     // Au moment de l'initialisation du composant, chargez la liste des écuries
-    this.listeEcurie();
+    this.valider();
+    this.getEcuries();
   }
 
   valider() {
@@ -55,16 +56,20 @@ export class AddLutteurComponent implements OnInit {
     this.lutteur.photo = file;
   }
 
-  listeEcurie() {
-    this.http.post<any>('http://localhost/exam.angular/ecurie/liste-ecurie.php',this.listeEcurie)
+  getEcuries() {
+    const postData = {};
+  
+    this.http.post<any>('http://localhost/exam.angular/ecurie/liste-ecurie.php', postData)
       .subscribe(response => {
-        if (response.success) {
+        // Assurez-vous que response est un tableau (array) d'écuries.
+        if (Array.isArray(response)) {
+          this.ecurie = response;
+        } else if (response && response.ecurie) {
+          // Si la structure est { ecurie: [...] }
           this.ecurie = response.ecurie;
         } else {
-          console.error('Erreur lors de la récupération des écuries:', response.error);
+          console.error('La réponse ne contient pas un tableau d\'écuries valide :', response);
         }
-        
-      }
-      );
+      });
   }
 }

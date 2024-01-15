@@ -46,7 +46,7 @@
                           
                             <div class="mb-3">
                               <label for="ecurie_id" class="form-label">Sélectionnez l'écurie:</label>
-                              <select class="form-select" id="floatingSelectGrid" [(ngModel)]="lutteur.ecurie_id">
+                              <select class="form-select" id="floatingSelectGrid" [(ngModel)]="lutteur.ecurie_id" name="ecurie_id">
                                 @for (ec of ecurie; track $index) {
                                   <option value="{{ec.id}}">{{ec.nom}}</option>
                                 }
@@ -59,9 +59,7 @@
                         
                         <button (click)="valider()" type="submit" class="btn btn-primary">Valider</button>
                       </form>
-                      <button class="btn mb-3" id="addButton" routerLink="liste-lutteur">
-                        liste lutteur
-                      </button>
+
 
                 </div>
 

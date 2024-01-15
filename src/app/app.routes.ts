@@ -18,9 +18,11 @@ import { ModifActualiteComponent } from './actualite/modif-actualite/modif-actua
 import { NavComponent } from './nav/nav.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 import { ClassementComponent } from './classement/classement.component';
+import { LoginComponent } from './login/login.component';
+
 
 export const routes: Routes = [
-    // { path: 'login', component: LoginComponent }
+    
      { path: 'accueil', pathMatch: "full", redirectTo: "accueil" },
 
      {path:'nav', component:NavComponent},
@@ -36,7 +38,7 @@ export const routes: Routes = [
    
      {path:'add-lutteur' ,component:AddLutteurComponent},
      {path:'delete-lutteur',component:DeleteLutteurComponent},
-     {path:'liste-luttteur',component:ListeLutteurComponent},
+     {path:'liste-lutteur',component:ListeLutteurComponent},
      {path:'modif-lutteur',component:ModifLutteurComponent},
 
      {path:'add-actu' ,component:AddActualiteComponent},
@@ -51,6 +53,12 @@ export const routes: Routes = [
      {path:'delete-ecurie',component:DeleteEcurieComponent},
      {path:'liste-ecurie',component:ListeEcurieComponent},
      {path:'modif-ecurie',component:ModifEcurieComponent},
+
+     
+     { path: 'login', component: LoginComponent },
+     
+
+     //{ path: 'dashboard', component: DashboardComponent,canActivate: [AuthguardGuard ] }
 
 
 ];

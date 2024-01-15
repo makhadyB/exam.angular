@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './liste-ecurie.component.css'
 })
 export class ListeEcurieComponent {
-  public ecurie: any[]= []
+public ecurie: any[]= []
   
   constructor(private http: HttpClient) {}
 
@@ -19,21 +19,25 @@ export class ListeEcurieComponent {
     this.getecuries();
   }
 
+ 
+  
+  
   getecuries() {
-    this.http.get<any>('http://localhost/exam.angular/ecurie/liste-ecurie.php')
+    const postData = {};
+  
+    this.http.post<any>('http://localhost/exam.angular/ecurie/liste-ecurie.php', postData)
       .subscribe(response => {
-        if (response.success) {
+        // Assurez-vous que response est un tableau (array) d'écuries.
+        if (Array.isArray(response)) {
+          this.ecurie = response;
+        } else if (response && response.ecurie) {
+          // Si la structure est { ecurie: [...] }
           this.ecurie = response.ecurie;
         } else {
-          console.error('Erreur lors de la récupération des ecuries:', response.error);
+          console.error('La réponse ne contient pas un tableau d\'écuries valide :', response);
         }
       });
   }
-  // private apiUrl = 'URL_DU_BACKEND/ecuries.php'; // Remplacez par l'URL de votre backend
-
-  // constructor(private http: HttpClient) {}
-
-  // getEcuries(): Observable<any[]> {
-  //   return this.http.get<any[]>(this.apiUrl);
-  // }
+  
+  
 }

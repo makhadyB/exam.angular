@@ -23,6 +23,8 @@ import { AccueilComponent } from './client/accueil/accueil.component';
 import { Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
+import { LoginComponent } from './login/login.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -32,10 +34,12 @@ import { HttpClientModule } from '@angular/common/http';
   AddLutteurComponent,DeleteLutteurComponent,ModifLutteurComponent,ListeLutteurComponent,
 AddEcurieComponent,ModifEcurieComponent,DeleteEcurieComponent,ListeEcurieComponent,
 ClassementComponent,
-StatistiqueComponent,AccueilComponent],
+StatistiqueComponent,AccueilComponent,LoginComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'examen.angular';
+ 
+
 }

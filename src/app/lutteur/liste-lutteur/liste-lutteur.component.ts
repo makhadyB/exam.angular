@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -14,7 +14,7 @@ import { HttpClient } from '@angular/common/http';
 })
 
 
-export class ListeLutteurComponent implements OnInit{
+export class ListeLutteurComponent {
   public title="Sougn Lamb"
   
   public lutteur: any[]= []
@@ -26,12 +26,16 @@ export class ListeLutteurComponent implements OnInit{
   }
 
   getLutteurs() {
-    this.http.get<any>('http://localhost/examangular/lutteurs/get.php')
+    const postData = {};
+    this.http.post<any>('http://localhost/exam.angular/lutteur/liste-lutteur.php',postData)
       .subscribe(response => {
-        if (response.success) {
+        if (Array.isArray(response)) {
+          this.lutteur = response;
+        } else if (response && response.lutteur) {
+          // Si la structure est { lutteur: [...] }
           this.lutteur = response.lutteur;
         } else {
-          console.error('Erreur lors de la récupération des lutteurs:', response.error);
+          console.error('La réponse ne contient pas un tableau d\'écuries valide :', response);
         }
       });
   }
