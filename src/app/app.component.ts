@@ -28,13 +28,13 @@ import { LoginComponent } from './login/login.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,RouterModule,RouterOutlet,NavComponent,HttpClientModule,
+  imports: [CommonModule,RouterModule,NavComponent,HttpClientModule,
     AddCombatComponent,ListeCombatComponent,ModifCombatComponent,DeleteCombatComponent,
     AddActualiteComponent,ListeActualiteComponent,ModifActualiteComponent,DeleteCombatComponent,
   AddLutteurComponent,DeleteLutteurComponent,ModifLutteurComponent,ListeLutteurComponent,
 AddEcurieComponent,ModifEcurieComponent,DeleteEcurieComponent,ListeEcurieComponent,
 ClassementComponent,
-StatistiqueComponent,AccueilComponent,LoginComponent],
+StatistiqueComponent,AccueilComponent,LoginComponent,RouterOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

@@ -25,7 +25,12 @@ export class AddLutteurComponent implements OnInit {
   ngOnInit() {
     // Au moment de l'initialisation du composant, chargez la liste des écuries
     this.valider();
-    this.getEcuries();
+  
+    this.http.get("http://localhost/exam.angular/ecurie/liste-ecurie.php").subscribe((reponse:any)=>{
+      console.log(reponse);
+      this.ecurie=reponse.data;
+    })
+  
   }
 
   valider() {
@@ -39,16 +44,14 @@ export class AddLutteurComponent implements OnInit {
     formData.append('ecurie_id', this.lutteur.ecurie_id);
     formData.append('photo', this.lutteur.photo);
 
-    this.http.post<any>('http://localhost/exam.angular/lutteur/add-lutteur.php', formData)
-      .subscribe(response => {
-        console.log('response = ', response);
-        if (response.success) {
-          // Si l'ajout est réussi, afficher une alerte
-          alert('Lutteur ajouté avec succès!');
-        } else {
-          console.error('Erreur lors de l\'ajout du lutteur:', response.error);
-        }
-      });
+    this.http.post('http://localhost/exam.angular/lutteurs/add-lutteur.php',formData)
+    .subscribe((reponse:any)=>
+  {
+    console.log("Réponse du backend= ",reponse)
+    })
+   // console.log(FormData);
+  
+   
   }
 
   handleFileInput(event: any) {
@@ -56,20 +59,15 @@ export class AddLutteurComponent implements OnInit {
     this.lutteur.photo = file;
   }
 
-  getEcuries() {
-    const postData = {};
   
-    this.http.post<any>('http://localhost/exam.angular/ecurie/liste-ecurie.php', postData)
-      .subscribe(response => {
-        // Assurez-vous que response est un tableau (array) d'écuries.
-        if (Array.isArray(response)) {
-          this.ecurie = response;
-        } else if (response && response.ecurie) {
-          // Si la structure est { ecurie: [...] }
-          this.ecurie = response.ecurie;
-        } else {
-          console.error('La réponse ne contient pas un tableau d\'écuries valide :', response);
-        }
-      });
-  }
 }
+
+  // .subscribe(response => {
+      //   console.log('response = ', response);
+      //   if (response.success) {
+      //     // Si l'ajout est réussi, afficher une alerte
+      //     alert('Lutteur ajouté avec succès!');
+      //   } else {
+      //     console.error('Erreur lors de l\'ajout du lutteur:', response.error);
+      //   }
+      // })

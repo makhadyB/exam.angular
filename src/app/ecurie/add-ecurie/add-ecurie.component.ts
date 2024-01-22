@@ -30,10 +30,11 @@ export class AddEcurieComponent {
     
    
 
-    this.http.post<any>('http://localhost/exam.angular/ecurie/add-ecurie.php', this.ecurie)
-      .subscribe(response => {
-        console.log('response = ', response);
-      });
+  this.http.post('http://localhost/exam.angular/ecurie/add-ecurie.php', formData)
+  .subscribe((reponse:any)=>
+  {
+    console.log("Réponse du backend= ",reponse)
+    })
     console.log(FormData);
   
     if (Response) {
