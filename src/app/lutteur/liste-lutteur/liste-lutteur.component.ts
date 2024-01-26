@@ -3,12 +3,13 @@ import { Component,OnInit} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { AdminComponent } from '../../admin/admin.component';
 
 
 @Component({
   selector: 'app-liste-lutteur',
   standalone: true,
-  imports: [CommonModule,RouterModule,RouterOutlet,FormsModule],
+  imports: [CommonModule,RouterModule,RouterOutlet,FormsModule,AdminComponent],
   templateUrl: './liste-lutteur.component.html',
   styleUrl: './liste-lutteur.component.css'
 })

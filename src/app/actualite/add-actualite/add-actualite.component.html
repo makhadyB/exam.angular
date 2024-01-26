@@ -10,10 +10,12 @@
     <title>actualite</title>
 </head>
 <body>
+  
   <!-- <div class="container w-50 mt-5">
     <div class="alert alert-success text-center fw-bold" role="alert">
       Ajout d'un actualite
     </div> -->
+    <app-admin></app-admin>
     <div class="container">
       
         <div class="row justify-content-center">
@@ -26,11 +28,17 @@
                           <input [(ngModel)]="actualite.contenu" type="text" class="form-control" id="InputNomactualite" name="contenu">
                         
                         </div>
+                        <div class="mb-3">
+  
+                          <label  class="form-label">Teaser</label>
+                          <input [(ngModel)]="actualite.teaser" type="text" class="form-control" id="InputNomteaser" name="teaser">
+                        
+                        </div>
                        
                         
                           
                             <div class="mb-3">
-                              <label for="ecurie_id" class="form-label">Sélectionnez l'écurie:</label>
+                              <label for="ecurie_id" class="form-label">admin:</label>
                               <select class="form-select" id="floatingSelectGrid" [(ngModel)]="actualite.user_id" name="user_id">
                                 @for (user of utilisateur; track $index) {
                                   <option value="{{user.id_utilisateur}}">{{user.email}}</option>
@@ -54,3 +62,4 @@
     </div>
 </body>
 </html>
+<router-outlet></router-outlet>

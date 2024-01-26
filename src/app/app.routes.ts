@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AddCombatComponent } from './combat/add-combat/add-combat.component';
 import { DeleteCombatComponent } from './combat/delete-combat/delete-combat.component';
 import { ListeCombatComponent } from './combat/liste-combat/liste-combat.component';
@@ -15,50 +15,74 @@ import { AddActualiteComponent } from './actualite/add-actualite/add-actualite.c
 import { DeleteActualiteComponent } from './actualite/delete-actualite/delete-actualite.component';
 import { ListeActualiteComponent } from './actualite/liste-actualite/liste-actualite.component';
 import { ModifActualiteComponent } from './actualite/modif-actualite/modif-actualite.component';
-import { NavComponent } from './nav/nav.component';
+
 import { StatistiqueComponent } from './statistique/statistique.component';
-import { ClassementComponent } from './classement/classement.component';
+
 import { LoginComponent } from './login/login.component';
+
+import { AccueilComponent } from './client/accueil/accueil.component';
+import { ActualiteComponent } from './client/actualite/actualite.component';
+import { LutteurComponent } from './client/lutteur/lutteur.component';
+import { EcurieComponent } from './client/ecurie/ecurie.component';
+import { CombatComponent } from './client/combat/combat.component';
+import { AdminComponent } from './admin/admin.component';
+import { NgModule } from '@angular/core';
+import { ClassementClientComponent } from './client/classement-client/classement-client.component';
+import { ClassementComponent } from './classement/classement.component';
 
 
 export const routes: Routes = [
     
-     { path: 'accueil', pathMatch: "full", redirectTo: "accueil" },
+     // { path: '', pathMatch: "full", redirectTo: "accueil" },
 
-     {path:'nav', component:NavComponent},
-     {path:'add-combat' ,component:AddCombatComponent},
-     {path:'delete-combat',component:DeleteCombatComponent},
-     {path:'liste-combat',component:ListeCombatComponent},
-     {path:'modif-combat',component:ModifCombatComponent},
+     { path: '', component: AccueilComponent },
 
-     {path:'add-ecurie' ,component:AddEcurieComponent},
-     {path:'delete-ecurie',component:DeleteEcurieComponent},
-     {path:'liste-ecurie',component:ListeEcurieComponent},
-     {path:'modif-ecurie',component:ModifEcurieComponent},
+     // admin
+     
+     {path:'admin' ,component:AdminComponent},
+
+     {path:'admin/add-combat' ,component:AddCombatComponent},
+     {path:'admin/delete-combat',component:DeleteCombatComponent},
+     {path:'admin/liste-combat',component:ListeCombatComponent},
+     {path:'admin/modif-combat',component:ModifCombatComponent},
+
+     {path:'admin/add-ecurie' ,component:AddEcurieComponent},
+     {path:'admin/delete-ecurie',component:DeleteEcurieComponent},
+     {path:'admin/liste-ecurie',component:ListeEcurieComponent},
+     {path:'admin/modif-ecurie',component:ModifEcurieComponent},
    
-     {path:'add-lutteur' ,component:AddLutteurComponent},
-     {path:'delete-lutteur',component:DeleteLutteurComponent},
-     {path:'liste-lutteur',component:ListeLutteurComponent},
-     {path:'modif-lutteur',component:ModifLutteurComponent},
+     {path:'admin/add-lutteur' ,component:AddLutteurComponent},
+     {path:'admin/delete-lutteur',component:DeleteLutteurComponent},
+     {path:'admin/liste-lutteur',component:ListeLutteurComponent},
+     {path:'admin/modif-lutteur',component:ModifLutteurComponent},
 
-     {path:'add-actu' ,component:AddActualiteComponent},
-     {path:'delete-actu',component:DeleteActualiteComponent},
-     {path:'liste-actu',component:ListeActualiteComponent},
-     {path:'modif-actu',component:ModifActualiteComponent},
+     {path:'admin/add-actu' ,component:AddActualiteComponent},
+     {path:'admin/delete-actu',component:DeleteActualiteComponent},
+     {path:'admin/liste-actu',component:ListeActualiteComponent},
+     {path:'admin/modif-actu',component:ModifActualiteComponent},
 
-     {path:'statistique',component:StatistiqueComponent},
-     {path:'classement',component:ClassementComponent},
+     {path:'admin/statistique',component:StatistiqueComponent},
+     {path:'admin/classement',component:ClassementComponent},
 
-     {path:'add-ecurie' ,component:AddEcurieComponent},
-     {path:'delete-ecurie',component:DeleteEcurieComponent},
-     {path:'liste-ecurie',component:ListeEcurieComponent},
-     {path:'modif-ecurie',component:ModifEcurieComponent},
+     {path:'admin/add-ecurie' ,component:AddEcurieComponent},
+     {path:'admin/delete-ecurie',component:DeleteEcurieComponent},
+     {path:'admin/liste-ecurie',component:ListeEcurieComponent},
+     {path:'admin/modif-ecurie',component:ModifEcurieComponent},
 
      
      { path: 'login', component: LoginComponent },
+//     clients
+     { path: 'accueil/actualite', component: ActualiteComponent },
+     { path: 'accueil/classement', component: ClassementClientComponent },
+     { path: 'accueil/lutteur', component:LutteurComponent },
+     { path: 'accueil/ecurie', component: EcurieComponent},
+     { path: 'accueil/combat', component: CombatComponent },
+  
+  
      
 
      //{ path: 'dashboard', component: DashboardComponent,canActivate: [AuthguardGuard ] }
 
 
 ];
+

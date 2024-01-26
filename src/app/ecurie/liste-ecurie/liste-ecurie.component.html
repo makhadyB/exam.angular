@@ -9,13 +9,29 @@
 </head>
 
 <body>
-    <div *ngFor="let uneEcurie of ecurie">
-        <h2>{{ uneEcurie.nom }}</h2>
-        <p>{{ uneEcurie.localisation }}</p>
-        <p>{{ uneEcurie.dirigeant }}</p>
-
-    </div>
-
+    <app-admin></app-admin>
+   <div class="container mt-4">
+    <div class="row">
+    @for (uneEcurie of ecurie; track $index) {
+        <div class="col-md-4 mb-4" >
+            <div class="card">
+                <div class="card-body">
+            <h2>{{ uneEcurie.nom }}</h2>
+            <p>{{ uneEcurie.localisation }}</p>
+            
+            <div>
+                
+            <button (click)="supprimerEcurie(uneEcurie.id)" class="btn btn-danger">supprimer  </button>
+        
+            <button routerLink="/modif-ecurie" class="btn btn-warning">  modifier</button>
+        </div>
+        </div>
+        </div>
+        </div>
+    
+    }
+</div>
+   </div>
 </body>
 
 </html>

@@ -1,16 +1,18 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AdminComponent } from '../../admin/admin.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-combat',
   standalone: true,
-  imports: [FormsModule,HttpClientModule],
+  imports: [FormsModule,HttpClientModule,AdminComponent,CommonModule],
   templateUrl: './add-combat.component.html',
   styleUrls: ['./add-combat.component.css']
 })
 export class AddCombatComponent implements OnInit{
-  combat = {
+  combat= {
     date_combat: '',
     lutteur1: '',
     lutteur2: '',
@@ -18,12 +20,12 @@ export class AddCombatComponent implements OnInit{
    
     
   };
-  public lutteur: any[] = [];
+   public lutteur:any[] = [];
 
 
   constructor(private http: HttpClient) {}
   ngOnInit() {
-    this.ajoutCombat();
+    //this.ajoutCombat();
    
    
     this.http.get("http://localhost/exam.angular/lutteurs/liste-lutteur.php").subscribe((reponse:any)=>{
@@ -46,12 +48,15 @@ export class AddCombatComponent implements OnInit{
    
 
   this.http.post('http://localhost/exam.angular/combat/add-combat.php',formData)
-  .subscribe((reponse:any)=>
-  {
-    console.log("Réponse du backend= ",reponse)
-    })
-    
-  
+  .subscribe((reponse: any) => {
+    console.log("Réponse du backend = ", reponse);
+
+    if (reponse.status) {
+      alert("Ajout avec succès");
+    } else {
+      alert("Erreur d'ajout : " + reponse.message);
+    }
+  });
     
   }
   

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -6,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule,HttpClientModule],
+  imports: [FormsModule,HttpClientModule,CommonModule],
   templateUrl: './login.component.html',
   styleUrls:['./login.component.css'] ,
   encapsulation: ViewEncapsulation.None,
@@ -34,7 +35,7 @@ export class LoginComponent   {
      this.user=reponse;
      
         if (reponse.success && reponse.data.length > 0) {
-         this.router.navigate(['../add-lutteur']); 
+         this.router.navigate(['../admin']); 
          
        
         }

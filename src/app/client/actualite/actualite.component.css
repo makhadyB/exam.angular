@@ -1,0 +1,18 @@
+/* body{
+    background-image: url('http://localhost/exam.angular/img/culture1.jpeg');
+    background-size: cover; 
+    opacity: 1;
+    
+} */
+.fade-in-out {
+    animation: fadeInOut 10s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}

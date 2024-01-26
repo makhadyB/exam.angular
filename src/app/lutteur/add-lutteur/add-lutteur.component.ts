@@ -1,11 +1,12 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AdminComponent } from '../../admin/admin.component';
 
 @Component({
   selector: 'app-add-lutteur',
   standalone: true,
-  imports: [FormsModule, HttpClientModule],
+  imports: [FormsModule, HttpClientModule,AdminComponent],
   templateUrl: './add-lutteur.component.html',
   styleUrls: ['./add-lutteur.component.css']
 })
@@ -47,7 +48,10 @@ export class AddLutteurComponent implements OnInit {
     this.http.post('http://localhost/exam.angular/lutteurs/add-lutteur.php',formData)
     .subscribe((reponse:any)=>
   {
-    console.log("Réponse du backend= ",reponse)
+    
+    console.log("Réponse du backend= ",reponse);
+    alert('ajout avec succes');
+
     })
    // console.log(FormData);
   

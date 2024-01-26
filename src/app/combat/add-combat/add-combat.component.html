@@ -9,10 +9,9 @@
     <title>combat</title>
 </head>
 <body>
-  <!-- <div class="container w-50 mt-5">
-    <div class="alert alert-success text-center fw-bold" role="alert">
-      Ajout d'un lutteur
-    </div> -->
+  
+
+    <app-admin></app-admin>
     <div class="container">
       
         <div class="row justify-content-center">
@@ -22,7 +21,7 @@
                         <div class="mb-3">
   
                           <label  class="form-label">date combat</label>
-                          <input [(ngModel)]="combat.date_combat " type="date" class="form-control" id="Inputdate combatcombat" name="date_combat" >
+                          <input [(ngModel)]="combat.date_combat" type="date" class="form-control" id="Inputdatecombatcombat" name="date_combat" >
                         
                         </div>
                        
@@ -32,8 +31,7 @@
                               @for (lut of lutteur; track $index) {
                                 <option value="{{lut.id}}">{{lut.nom}}</option>
                               }
-                        
-                        
+                      
                             </select>
                         </div>
                         <div class="mb-3">
@@ -55,8 +53,7 @@
                               }
                               
                          
-                        
-                        
+          
                             </select>
                         </div>
                           
